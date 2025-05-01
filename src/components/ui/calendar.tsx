@@ -1,38 +1,11 @@
 import * as React from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@radix-ui/react-icons';
-import { DayPicker, NavigationProps } from 'react-day-picker';
+import { DayPicker } from 'react-day-picker';
 
 import { cn } from '@/lib/utils';
 import { buttonVariants } from '@/components/ui/button';
 
 export type CalendarProps = React.ComponentProps<typeof DayPicker>;
-
-function CustomNavigation({ nextMonth, previousMonth }: NavigationProps) {
-  return (
-    <div className="space-x-1 flex items-center">
-      <button
-        type="button"
-        onClick={() => previousMonth && previousMonth()}
-        className={cn(
-          buttonVariants({ variant: 'outline' }),
-          'h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100 absolute left-1'
-        )}
-      >
-        <ChevronLeftIcon className="h-4 w-4" />
-      </button>
-      <button
-        type="button"
-        onClick={() => nextMonth && nextMonth()}
-        className={cn(
-          buttonVariants({ variant: 'outline' }),
-          'h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100 absolute right-1'
-        )}
-      >
-        <ChevronRightIcon className="h-4 w-4" />
-      </button>
-    </div>
-  );
-}
 
 function Calendar({
   className,
@@ -44,6 +17,8 @@ function Calendar({
     <DayPicker
       showOutsideDays={showOutsideDays}
       className={cn('p-3', className)}
+      iconLeft={<ChevronLeftIcon className="h-4 w-4" />}
+      iconRight={<ChevronRightIcon className="h-4 w-4" />}
       classNames={{
         months: 'flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0',
         month: 'space-y-4',
@@ -83,9 +58,6 @@ function Calendar({
           'aria-selected:bg-accent aria-selected:text-accent-foreground',
         day_hidden: 'invisible',
         ...classNames,
-      }}
-      components={{
-        Navigation: CustomNavigation,
       }}
       {...props}
     />
