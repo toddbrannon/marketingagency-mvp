@@ -7,7 +7,6 @@ import CallToAction from '@/components/common/CallToAction';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { cn } from '@/lib/utils';
 import { services } from '@/data/services';
 
 const renderIcon = (iconName: string) => {
