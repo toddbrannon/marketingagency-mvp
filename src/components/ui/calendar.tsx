@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@radix-ui/react-icons';
 import { DayPicker, type DayPickerProps } from 'react-day-picker';
 
@@ -15,6 +14,7 @@ function Calendar({
 }: CalendarProps) {
   return (
     <DayPicker
+      mode="single" // ✅ explicit
       showOutsideDays={showOutsideDays}
       className={cn('p-3', className)}
       iconLeft={<ChevronLeftIcon className="h-4 w-4" />}
