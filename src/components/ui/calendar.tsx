@@ -36,6 +36,7 @@ function Calendar({
         head_cell:
           "text-muted-foreground rounded-md w-9 font-normal text-[0.8rem]",
         row: "flex w-full mt-2",
+        cell: "h-9 w-9 text-center text-sm p-0 relative",
         day: "h-9 w-9 p-0 font-normal aria-selected:opacity-100",
         day_range_start: "day-range-start",
         day_range_end: "day-range-end",
@@ -49,11 +50,29 @@ function Calendar({
         ...classNames,
       }}
       components={{
-        PreviousMonthButton: (props) => (
-          <ChevronLeft className="size-4" {...props} />
+        PreviousMonthButton: ({ ...props }) => (
+          <button
+            type="button"
+            className={cn(
+              buttonVariants({ variant: "outline" }),
+              "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100"
+            )}
+            {...props}
+          >
+            <ChevronLeft className="h-4 w-4" />
+          </button>
         ),
-        NextMonthButton: (props) => (
-          <ChevronRight className="size-4" {...props} />
+        NextMonthButton: ({ ...props }) => (
+          <button
+            type="button"
+            className={cn(
+              buttonVariants({ variant: "outline" }),
+              "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100"
+            )}
+            {...props}
+          >
+            <ChevronRight className="h-4 w-4" />
+          </button>
         ),
       }}
       {...props}
