@@ -7,20 +7,16 @@ import { DayPicker } from "react-day-picker";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 
-import "react-day-picker/dist/style.css";
-
-function CustomNavigation(props: any) {
-  const { dir, ...rest } = props;
-  return dir === "prev" ? (
-    <ChevronLeft className={cn("size-4")} {...rest} />
-  ) : (
-    <ChevronRight className={cn("size-4")} {...rest} />
-  );
-}
+import "react-day-picker/style.css";
 
 export type CalendarProps = React.ComponentProps<typeof DayPicker>;
 
-function Calendar({ className, classNames, showOutsideDays = true, ...props }: CalendarProps) {
+function Calendar({
+  className,
+  classNames,
+  showOutsideDays = true,
+  ...props
+}: CalendarProps) {
   return (
     <DayPicker
       showOutsideDays={showOutsideDays}
@@ -37,21 +33,28 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }: C
         ),
         table: "w-full border-collapse space-y-1",
         head_row: "flex",
-        head_cell: "text-muted-foreground rounded-md w-9 font-normal text-[0.8rem]",
+        head_cell:
+          "text-muted-foreground rounded-md w-9 font-normal text-[0.8rem]",
         row: "flex w-full mt-2",
-        cell: "h-9 w-9 text-center text-sm p-0 relative [&:has([aria-selected].day-range-end)]:rounded-r-md [&:has([aria-selected].day-range-start)]:rounded-l-md [&:has([aria-selected])]:bg-accent [&:has([aria-selected])]:text-accent-foreground [&:has([aria-selected].day-outside)]:bg-muted [&:has([aria-selected].day-outside)]:text-muted-foreground [&:has([aria-selected].day-today)]:bg-primary/10",
         day: "h-9 w-9 p-0 font-normal aria-selected:opacity-100",
         day_range_start: "day-range-start",
         day_range_end: "day-range-end",
-        day_selected: "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground",
+        day_selected:
+          "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground",
         day_today: "bg-accent text-accent-foreground",
         day_outside: "day-outside text-muted-foreground opacity-50",
         day_disabled: "text-muted-foreground opacity-50",
-        day_range_middle: "aria-selected:bg-accent aria-selected:text-accent-foreground",
+        day_range_middle:
+          "aria-selected:bg-accent aria-selected:text-accent-foreground",
         ...classNames,
       }}
       components={{
-        Navigation: CustomNavigation,
+        PreviousMonthButton: (props) => (
+          <ChevronLeft className="size-4" {...props} />
+        ),
+        NextMonthButton: (props) => (
+          <ChevronRight className="size-4" {...props} />
+        ),
       }}
       {...props}
     />
