@@ -1,19 +1,21 @@
-import { Outlet } from 'react-router-dom';
-import { Toaster } from '@/components/ui/sonner';
+// src/components/layout/MainLayout.tsx
 
-import Navbar from '@/components/layout/Navbar';
-import Footer from '@/components/layout/Footer';
+import React from 'react';
+import Footer from '@/components/Footer';
 
-const MainLayout = () => {
+const MainLayout: React.FC = ({ children }) => {
   return (
-    <div className="flex min-h-screen flex-col">
-      <Navbar />
-      <main className="flex-1">
-        <Outlet />
-      </main>
-      <Footer />
-      <Toaster />
-    </div>
+    <>
+      {/* Other layout components */}
+      {children}
+      <Footer
+        title="Stay Connected"
+        description="Subscribe to our newsletter for the latest updates."
+        primaryButtonText="Subscribe"
+        primaryButtonLink="/subscribe"
+        variant="dark"
+      />
+    </>
   );
 };
 
