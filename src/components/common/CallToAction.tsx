@@ -67,8 +67,11 @@ const CallToAction = ({
             {secondaryButtonText && secondaryButtonLink && (
               <Button
                 asChild
-                variant={variant === 'accent' ? 'outline' : 'outline'}
+                variant="outline"
                 size="lg"
+                className={cn({
+                  'bg-transparent border-white hover:bg-white/10': variant === 'accent',
+                })}
               >
                 <Link to={secondaryButtonLink}>{secondaryButtonText}</Link>
               </Button>
